@@ -18,7 +18,7 @@ import com.application.hibernate_spring.model.PersonNotFoundException;
 @RequestMapping(path = "/person")
 public class Controller {
 	@Autowired
-	private Service service;
+	private IService service;
 
 	@GetMapping("/hello")
 	public @ResponseBody String greeting() {

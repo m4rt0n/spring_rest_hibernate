@@ -3,11 +3,14 @@ package com.application.hibernate_spring.data;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.application.hibernate_spring.model.Person;
 import com.application.hibernate_spring.model.PersonNotFoundException;
 
-public class Service {
+//@Service
+@Component
+public class Service implements IService {
 	@Autowired
 	private IRepository repo;
 

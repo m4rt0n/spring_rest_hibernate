@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	private String name;
 
@@ -20,6 +20,11 @@ public class Person {
 	}
 
 	public Person(String name) {
+		this.name = name;
+	}
+
+	public Person(long id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
