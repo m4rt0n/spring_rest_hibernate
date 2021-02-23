@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,35 +26,34 @@ public class Controller {
 
 	@PostMapping("/addpeople")
 	public void dummyAddPerson() {
-		service.create(new Person("a"));
-		service.create(new Person("b"));
-		service.create(new Person("c"));
+		service.saveOrUpdate(new Person("a"));
+		service.saveOrUpdate(new Person("b"));
+		service.saveOrUpdate(new Person("c"));
 	}
 
-	@GetMapping("/all")
+	@GetMapping("/getall")
 	public Iterable<Person> getAllPerson() {
 		return service.findAll();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/getbyid/{id}")
 	public Person getPersonById(@PathVariable("id") Long id) throws PersonNotFoundException {
 		return service.findById(id);
 	}
 
-	@PostMapping("/create")
-	public void createPerson(@RequestBody Person newPerson) {
-		service.create(newPerson);
+	@PostMapping("/save")
+	public void saveOrUpdatePerson(@RequestBody Person newPerson) {
+		service.saveOrUpdate(newPerson);
 	}
 
-	@PutMapping("/{id}")
-	public void updatePerson(@PathVariable("id") Long id, @RequestBody Person newDetails)
-			throws PersonNotFoundException {
-		service.update(id, newDetails);
-	}
-
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/deletebyid/{id}")
 	public void deletePerson(@PathVariable("id") Long id) {
 		service.deleteById(id);
+	}
+
+	@DeleteMapping("/deleteall")
+	public void deleteAllPerson() {
+		service.deleteAll();
 	}
 
 }

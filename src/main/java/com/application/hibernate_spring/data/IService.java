@@ -10,9 +10,13 @@ public interface IService {
 
 	public Person findById(long id) throws PersonNotFoundException;
 
-	public Person create(Person newPerson);
+	public Person findByName(String name) throws PersonNotFoundException;
 
-	public Person update(long id, Person newDetails) throws PersonNotFoundException;
+	public List<Person> findAllByOrderByNameAsc();
 
 	public void deleteById(long id);
+
+	public void deleteAll();
+
+	public Person saveOrUpdate(Person person);
 }
