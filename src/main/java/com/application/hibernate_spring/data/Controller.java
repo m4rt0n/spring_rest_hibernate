@@ -20,15 +20,15 @@ public class Controller {
 	private IService service;
 
 	@GetMapping("/hello")
-	public @ResponseBody String greeting() {
-		return "Hello, World";
+	public @ResponseBody String hello() {
+		return service.hello();
 	}
 
 	@PostMapping("/addpeople")
-	public void dummyAddPerson() {
-		service.saveOrUpdate(new Person("a"));
-		service.saveOrUpdate(new Person("b"));
-		service.saveOrUpdate(new Person("c"));
+	public void addPeople() {
+		service.saveOrUpdate(new Person("John"));
+		service.saveOrUpdate(new Person("Jane"));
+		service.saveOrUpdate(new Person("Jim"));
 	}
 
 	@GetMapping("/getall")

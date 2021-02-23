@@ -19,4 +19,6 @@ public interface IService {
 	public void deleteAll();
 
 	public Person saveOrUpdate(Person person);
+
+	public String hello();
 }

@@ -17,6 +17,10 @@ public class Service implements IService {
 	@Autowired
 	private IRepository repo;
 
+	public String hello() {
+		return "Hello!";
+	}
+
 	public List<Person> findAll() {
 		return (List<Person>) repo.findAll();
 	}
