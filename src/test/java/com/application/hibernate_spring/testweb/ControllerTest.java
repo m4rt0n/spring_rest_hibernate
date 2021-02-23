@@ -8,17 +8,29 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.application.hibernate_spring.data.Controller;
 import com.application.hibernate_spring.data.IService;
 import com.application.hibernate_spring.model.Person;
 import com.application.hibernate_spring.model.PersonNotFoundException;
 
 @SpringBootTest
-class TestController {
+class ControllerTest {
+
+	@Autowired
+	private Controller controller;
+
+	@BeforeAll
+	@Test
+	public void contextLoads() throws Exception {
+		assertThat(controller).isNotNull();
+	}
+
 	@Autowired
 	private IService service;
 

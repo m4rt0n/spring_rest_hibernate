@@ -12,7 +12,7 @@
 	<artifactId>hibernate_spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hibernate_spring</name>
-	<description>Demo project for Spring Boot</description>
+	<description>demo project for hibernate</description>
 	<properties>
 		<java.version>14</java.version>
 	</properties>
@@ -50,9 +50,15 @@
 		</dependency>
 		
 		<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter</artifactId>
-</dependency>
+    		<groupId>org.junit.jupiter</groupId>
+   			 <artifactId>junit-jupiter</artifactId>
+		</dependency>
+
+		<dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <scope>test</scope>
+        </dependency>
 		
 		
 	</dependencies>
