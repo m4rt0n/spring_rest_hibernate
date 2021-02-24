@@ -27,7 +27,6 @@ class ServiceTest {
 
 	@Autowired
 	private IService service;
-	private List<Person> list = new ArrayList<>();
 
 	@BeforeEach
 	public void setup() {
@@ -35,14 +34,16 @@ class ServiceTest {
 		Person john = new Person("John");
 		Person jane = new Person("Jane");
 		Person jim = new Person("Jim");
-		list.add(john);
-		list.add(jane);
-		list.add(jim);
-		list.forEach(p -> service.saveOrUpdate(p));
+		List<Person> setupList = new ArrayList<>();
+		setupList.add(john);
+		setupList.add(jane);
+		setupList.add(jim);
+		setupList.forEach(p -> service.saveOrUpdate(p));
 	}
 
 	@Test
 	public void findAll() {
+		List<Person> list = service.findAll();
 		assertNotNull(list);
 		assertEquals(3, list.size());
 	}
@@ -56,6 +57,7 @@ class ServiceTest {
 
 	@Test
 	public void update() {
+		List<Person> list = service.findAll();
 		Person oldPerson = list.get(0);
 		Person updatePerson = new Person("updateName");
 		oldPerson.setName(updatePerson.getName());
@@ -65,6 +67,7 @@ class ServiceTest {
 
 	@Test
 	public void getById() throws PersonNotFoundException {
+		List<Person> list = service.findAll();
 		Person p1 = list.get(0);
 		Person p2 = service.findById(p1.getId());
 		assertEquals(p1.getId(), p2.getId());
@@ -72,6 +75,7 @@ class ServiceTest {
 
 	@Test
 	public void deleteById() {
+		List<Person> list = service.findAll();
 		Person p1 = list.get(0);
 		service.deleteById(p1.getId());
 		List<Person> newList = service.findAll();
@@ -88,6 +92,7 @@ class ServiceTest {
 
 	@Test
 	public void findAllOrderedByName() {
+		List<Person> list = service.findAll();
 		List<Person> orderedByService = service.findAllByOrderByNameAsc();
 		assertNotNull(orderedByService);
 		assertNotSame(list.get(0).getName(), orderedByService.get(0).getName());
@@ -118,6 +123,7 @@ class ServiceTest {
 
 	@Test
 	public void deleteAll() {
+		List<Person> list = service.findAll();
 		service.deleteAll();
 		List<Person> listAfterDelete = service.findAll();
 		assertNotEquals(listAfterDelete.size(), list.size());
