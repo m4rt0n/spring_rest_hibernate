@@ -23,7 +23,7 @@ import com.application.hibernate_spring.model.Person;
 import com.application.hibernate_spring.model.PersonNotFoundException;
 
 @SpringBootTest
-class ServiceTest {
+class TestServiceDb {
 
 	@Autowired
 	private IService service;

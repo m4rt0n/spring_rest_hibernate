@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.application.hibernate_spring.data.Controller;
 
 @SpringBootTest
-public class AppTest {
+public class TestApp {
 	@Autowired
 	private Controller controller;
 

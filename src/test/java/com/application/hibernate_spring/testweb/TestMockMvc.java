@@ -21,7 +21,7 @@ import com.application.hibernate_spring.data.IService;
 import com.application.hibernate_spring.model.Person;
 
 @WebMvcTest(Controller.class)
-public class WebMockTest {
+public class TestMockMvc {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -47,7 +47,6 @@ public class WebMockTest {
 		list.add(john);
 		list.add(jane);
 		list.add(jim);
-		list.forEach(p -> service.saveOrUpdate(p));
 
 		when(service.findAll()).thenReturn(list);
 		this.mockMvc.perform(get(PERSON_PATH + "getall")).andExpect(status().isOk());
@@ -56,10 +55,10 @@ public class WebMockTest {
 	@Test
 	public void getById() throws Exception {
 		Person john = new Person("John");
-		service.saveOrUpdate(john);
 
 		when(service.findById(john.getId())).thenReturn(john);
 		this.mockMvc.perform(get(PERSON_PATH + "getbyid/" + john.getId())).andExpect(status().isOk());
+
 	}
 
 }
